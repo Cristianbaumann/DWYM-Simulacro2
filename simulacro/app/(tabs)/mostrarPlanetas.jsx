@@ -36,9 +36,8 @@ const MostrarPlanetas = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.planetButton}
-            onPress={
-              () =>
-                navigation.navigate("DetallesPlaneta", { planetaId: item.id }) // Asegúrate de pasar el parámetro 'planetaId'
+            onPress={() =>
+              navigation.navigate("DetallesPlaneta", { planetaId: item.id })
             }
           >
             <Image source={{ uri: item.image }} style={styles.planetImage} />
