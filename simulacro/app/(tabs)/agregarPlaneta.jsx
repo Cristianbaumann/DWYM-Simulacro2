@@ -28,6 +28,7 @@ const AgregarPlaneta = () => {
   };
 
   const handleAgregarPlaneta = async () => {
+    //para que no falte campos para agregar un planeta
     if (!nombre || !descripcion) {
       Alert.alert(
         "Error",
@@ -37,12 +38,16 @@ const AgregarPlaneta = () => {
     }
 
     try {
+      //cambiar si cambias de internet
       const response = await fetch("http://172.20.10.2:8000/planets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          //tenes que poner los campos que se necesitan para agregar un planeta, ademas se tiene que
+          //poner los nombres como estan en el backend y sino poner los dos puntos como esta aca
+
           name: nombre,
           description: descripcion,
           moons: parseInt(lunas, 10),

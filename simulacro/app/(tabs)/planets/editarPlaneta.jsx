@@ -12,6 +12,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 export default function editar() {
   const params = useLocalSearchParams(); // Obtener los parámetros desde la URL
   const { id, name, description, moons, moon_names, image } = params;
+  //para usar el router push y demas
   const router = useRouter();
 
   const [newName, setNewName] = useState(name || "");
@@ -30,6 +31,7 @@ export default function editar() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            //aca elegis los datos para que se envien a editar
             name: newName,
             description: newDescription,
             moons: parseInt(newMoons, 10),

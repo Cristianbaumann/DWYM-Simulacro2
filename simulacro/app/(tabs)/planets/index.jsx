@@ -14,10 +14,11 @@ import { useFocusEffect, useRouter } from "expo-router";
 
 const MostrarPlanetas = () => {
   const [planetas, setPlanetas] = useState([]);
-  const router = useRouter();
+  const router = useRouter(); //importante para que funcione el router y se pueda navegar
 
   const screenWidth = Dimensions.get("window").width;
 
+  //funcion para traer los planetas
   const fetchPlanetas = async () => {
     try {
       //cambiar si cambias de internet
@@ -32,10 +33,12 @@ const MostrarPlanetas = () => {
     }
   };
 
+  //se agrecga al useEffect para que se ejecute la funcion fetchPlanetas
   useEffect(() => {
     fetchPlanetas();
   }, []);
 
+  //funcion para eliminar un planeta
   const DeletePlanet = async (id) => {
     try {
       //cambiar si cambias de internet
@@ -54,6 +57,8 @@ const MostrarPlanetas = () => {
     }
   };
 
+  //importante importarlo
+  //Esto es para que cuando se vuelva a la pantalla se actualice, es decir no tenes que recargar para que te aparescan las cosas.
   useFocusEffect(
     useCallback(() => {
       //cambiar si cambias de internet
@@ -82,10 +87,12 @@ const MostrarPlanetas = () => {
                   })
                 }
               >
+                {/* para mostrar la imagen del planeta */}
                 <Image
                   source={{ uri: item.image }}
                   style={styles.planetImage}
                 />
+                {/* muestra el nombre del planeta fijarse como esta en el backend los nombres de las propiedades */}
                 <Text style={styles.planetText}>{item.name}</Text>
               </TouchableOpacity>
               <View style={styles.buttonContainer}>

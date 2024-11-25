@@ -4,24 +4,28 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 
 const DetallesPlaneta = () => {
-  const params = useLocalSearchParams(); // Obtener los parámetros desde la URL
-  const { name, description, moons, moon_names, image } = params;
+  const params = useLocalSearchParams(); // Obtener los parámetros desde la URL, esto muy importante para que se muestre todo
+  const { name, description, moons, moon_names, image } = params; //esto tambien como lo de arriba, poner los nombres como backend
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.container}>
         <Text style={styles.title}>Detalles del Planeta</Text>
+        {/* esto es para mostrar la imagen del planeta */}
         {image && <Image source={{ uri: image }} style={styles.planetImage} />}
         <Text style={styles.detailText}>
+          {/* nombre del planeta */}
           <Text style={styles.label}>Nombre: </Text>
           {name}
         </Text>
         <Text style={styles.detailText}>
+          {/* descripcion del planeta */}
           <Text style={styles.label}>Descripción: </Text>
           {description}
         </Text>
         <Text style={styles.detailText}>
+          {/* cantidad de lunas */}
           <Text style={styles.label}>Cantidad de Lunas: </Text>
           {moons}
         </Text>
